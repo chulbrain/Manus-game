@@ -1,0 +1,204 @@
+/* 레트로 스타일 게임 CSS */
+.game-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Press Start 2P', cursive, system-ui;
+  background-color: #f0f0f0;
+  border: 8px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.game-title {
+  color: #e63946;
+  font-size: 2.5rem;
+  text-shadow: 3px 3px 0 #000;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.score-display, .time-display {
+  padding: 5px 10px;
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+
+.difficulty-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.difficulty-button {
+  font-family: 'Press Start 2P', cursive, system-ui;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: 3px solid #333;
+  transition: all 0.2s;
+}
+
+.difficulty-button:hover {
+  transform: scale(1.05);
+  background-color: #45a049;
+}
+
+.start-button {
+  font-family: 'Press Start 2P', cursive, system-ui;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  background-color: #e63946;
+  color: white;
+  border: 4px solid #333;
+  border-radius: 10px;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.start-button:hover {
+  transform: scale(1.1);
+  background-color: #d62b39;
+  box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.mole-hole {
+  position: relative;
+  height: 120px;
+  background-color: #6b4f2d;
+  border-radius: 50%;
+  border: 5px solid #3a2914;
+  overflow: hidden;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 13H5v-2h14v2z"/></svg>'), auto;
+}
+
+.mole {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  transition: bottom 0.2s;
+  animation: pop-up 0.5s;
+}
+
+.mole-image {
+  width: 100%;
+  height: auto;
+}
+
+/* 두더지 표정 변형 */
+.mole-expression-0 { filter: brightness(1); }
+.mole-expression-1 { filter: sepia(0.5); }
+.mole-expression-2 { filter: contrast(1.2); }
+.mole-expression-3 { filter: hue-rotate(20deg); }
+.mole-expression-4 { filter: brightness(0.8); }
+.mole-expression-5 { filter: saturate(1.5); }
+
+@keyframes pop-up {
+  0% { bottom: -80px; }
+  100% { bottom: 0; }
+}
+
+.high-scores {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.high-scores h2 {
+  color: #ffd700;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.high-scores ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.high-scores li {
+  padding: 5px;
+  font-size: 1rem;
+  border-bottom: 1px dashed #666;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 1.8rem;
+  }
+  
+  .game-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .mole-hole {
+    height: 100px;
+  }
+  
+  .mole {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 10px;
+  }
+  
+  .game-title {
+    font-size: 1.5rem;
+  }
+  
+  .game-info {
+    font-size: 0.9rem;
+  }
+  
+  .difficulty-button, .start-button {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+  
+  .game-board {
+    gap: 8px;
+  }
+  
+  .mole-hole {
+    height: 80px;
+  }
+  
+  .mole {
+    width: 60px;
+    height: 60px;
+  }
+}
